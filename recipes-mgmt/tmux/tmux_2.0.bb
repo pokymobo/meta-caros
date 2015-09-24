@@ -15,5 +15,7 @@ inherit autotools pkgconfig
 
 do_configure_prepend () {
     sed -i -e 's:-I/usr/local/include::' ${S}/Makefile.am || bb_fatal "sed failed"
-    mkdir -p "${B}/compat" || bb_fatal "mkdir ${B}/compat failed"
 }
+
+# build in-tree
+B = "${S}"
